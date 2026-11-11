@@ -1,0 +1,23 @@
+name: Update Profile Tulkun
+
+on:
+  schedule:
+    # Runs every night at 00:15 UTC
+    - cron: "15 0 * * *"
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  update-tulkun:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: PramudithaN/git-tulkun@v1
+        with:
+          view: side
+          window: annual
+          commit: "true"
+          branch: output
